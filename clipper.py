@@ -12,7 +12,7 @@ Original file is located at
 #getting book title
 book_name = input("Enter the name of the book: ")
 #opening my clippings
-clippings = open("My Clippings.txt", encoding="utf8")
+clippings = open("My Clippings.txt", encoding="utf-8")
 #split into lines
 clip_lines = clippings.readlines()
 #create list of lines that matter to us
@@ -20,7 +20,7 @@ clip_lines = clippings.readlines()
 lines = []
 save = False
 for line in clip_lines:
-    if book_name in line:
+    if book_name.lower() in line.lower():
         save = True
     if '==========' in line:
         save = False
@@ -48,7 +48,7 @@ for line in lines:
 clippings.close()
 #save to a file
 filename = book_name + "_highlights.txt"
-file = open(filename, 'w')
+file = open(filename, 'w', encoding='utf-8')
 for clip in highlights:
   file.write(clip)
 file.close()
